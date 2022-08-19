@@ -1,5 +1,3 @@
-const { projects, clients } = require('../sampleData.js')
-
 // Mongoose models
 const Project = require('../models/Project');
 const Client = require('../models/Client');
@@ -11,6 +9,7 @@ const {
     GraphQLString, 
     GraphQLSchema,
     GraphQLList,
+    GraphQLNonNull,
 } = require('graphql');
 
 // Project Type
@@ -24,7 +23,7 @@ const ProjectType = new GraphQLObjectType({
         client: {
             type: ClientType,
             resolve(parent, args) {
-                return clients.findById(parent.clientId);
+                return Client.findById(parent.clientId);
             }
         }
     }),
@@ -41,6 +40,8 @@ const ClientType = new GraphQLObjectType({
     }),
 });
 
+
+// query to add or retrieve data
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -73,6 +74,40 @@ const RootQuery = new GraphQLObjectType({
     },
 });
 
+// Mutations
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addClient:{
+            type: ClientType,
+            args: {
+                name: {type: GraphQLNonNull(GraphQLString) },
+                email: {type: GraphQLNonNull(GraphQLString) },
+                phone: {type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parent, args) {
+                const client = new Client({
+                    name: args.name,
+                    email: args.email,
+                    phone: args.phone,
+                });
+
+                return client.save();
+            },
+        },
+        deleteClient: {
+            type: ClientType,
+            args: {
+                id: { type: GraphQLNonNull(GraphQLID) },
+            },
+            resolve(parent, args) {
+                return Client.findByIdAndRemove(args.id);
+            },
+        },
+    },
+});
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
-})
+    query: RootQuery,
+    mutation,
+});
