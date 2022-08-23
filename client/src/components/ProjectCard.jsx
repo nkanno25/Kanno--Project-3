@@ -1,9 +1,9 @@
 export default function ProjectCard({ project }) {
   return (
-    <div className="col-md-4">
+    <div className="col-md-6">
         <div className="card mb-3">
             <div className="card-body">
-                <div classNAme="d-flex justify-content-between.align-items-center">
+                <div className="d-flex justify-content-between align-items-center">
                     <h5 className="card-title">{ project.name}
                     </h5>
 
