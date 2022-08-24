@@ -8,7 +8,7 @@ query getProjects {
         status
     }
 }
-`
+`;
 
 const GET_PROJECT = gql`
 query getProject($id: ID!) {
@@ -25,6 +25,6 @@ query getProject($id: ID!) {
         }
     }
 }
-`
+`;
 
-export { GET_PROJECTS, GET_PROJECT}; 
+export { GET_PROJECTS, GET_PROJECT }; 

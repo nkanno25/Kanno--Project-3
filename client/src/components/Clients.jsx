@@ -5,7 +5,7 @@ import { GET_CLIENTS } from '../queries/clientQueries';
 
 
 export default function Clients() {
-    const { loading, error, data } = useQuery(GET_CLIENTS)
+    const { loading, error, data } = useQuery(GET_CLIENTS);
 
     if (loading) return <Spinner />;
     if(error) return <p>Something is wrong</p>;
@@ -22,7 +22,7 @@ export default function Clients() {
               </tr>
           </thead>
           <tbody>
-              {data.clients.map(client => (
+              {data.clients.map((client) => (
                   <ClientRow key={client.id} client={client} />
               ))}
           </tbody>
