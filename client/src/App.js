@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import Project from './pages/Project';
 import NotFound from './pages/NotFound';
 
-
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -30,6 +29,7 @@ const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
   cache,
 });
+
 
 function App() {
   return (
