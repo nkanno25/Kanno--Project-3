@@ -28,6 +28,11 @@ Have a clean repository that meets quality coding standards (file structure, nam
 
 Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
+## Run Project 
+
+Open Terminal
+
+``npm run start``
 
 
 
