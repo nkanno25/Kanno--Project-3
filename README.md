@@ -32,7 +32,10 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 Open new terminal
 
-type ``npm run start`` in the terminal
+1. cd into server folder 
+2. ``npm run start`` 
+3. cd into client folder
+4. ``npm run start``
 
 
 
