@@ -30,9 +30,9 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 ## Run Project 
 
-Open Terminal
+Open new terminal
 
-``npm run start``
+type ``npm run start`` in the terminal
 
 
 
